@@ -27,11 +27,22 @@ export class UsersService {
 
   constructor(private http: HttpClient) { };
 
-  findAll(page: number, size: number): Observable<UserData>
-    {
+  findAll(page: number, size: number): Observable<UserData> {
     let params = new HttpParams();
     params = params.append('page', String(page));
     params = params.append('limit', String(size));
+
+    return this.http.get<UserData>('/api/users', {params}).pipe(
+      map((userData: UserData) => userData),
+      catchError(err => throwError(() => err))
+    )
+  }
+
+  paginateByName(page: number, size: number, username: string): Observable<UserData> {
+    let params = new HttpParams();
+    params = params.append('page', String(page));
+    params = params.append('limit', String(size));
+    params = params.append('username', username);
 
     return this.http.get<UserData>('/api/users', {params}).pipe(
       map((userData: UserData) => userData),

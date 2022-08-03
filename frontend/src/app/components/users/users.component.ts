@@ -10,6 +10,8 @@ import { UserData, UsersService } from 'src/app/services/user-service/users.serv
 })
 export class UsersComponent implements OnInit {
 
+
+  filterValue: string;
   dataSource: UserData;
   pageEvent: PageEvent;
   displayedColumns: string[] = ['id', 'name', 'username', 'email', 'role']
@@ -31,9 +33,22 @@ export class UsersComponent implements OnInit {
     let page = event.pageIndex;
     let size = event.pageSize;
 
-    page++;
+    if(this.filterValue == null) {
+      page++;
 
-    this.userService.findAll(page, size).pipe(
+      this.userService.findAll(page, size).pipe(
+        map((userData: UserData) => this.dataSource = userData)
+        ).subscribe();
+    } else {
+      this.userService.paginateByName(page, size, this.filterValue).pipe(
+        map((userData: UserData) => this.dataSource = userData)
+      ).subscribe(); 
+    }
+    
+  }
+
+  findByName(username: string) {
+    this.userService.paginateByName(0, 10, username).pipe(
       map((userData: UserData) => this.dataSource = userData)
     ).subscribe();
   }
