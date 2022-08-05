@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +17,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MatCardModule } from '@angular/material/card';
+import { UpdateUserProfileComponent } from './components/update-user-profile/update-user-profile.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { MatCardModule } from '@angular/material/card';
     LoginComponent,
     RegisterComponent,
     UsersComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UpdateUserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,15 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
 
   ],
-  providers: [],
+  providers: [
+    JwtHelperService, 
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

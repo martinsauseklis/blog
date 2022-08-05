@@ -58,5 +58,5 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['./' + id], {relativeTo: this.activatedRoute});
   }
   
-
+  
 }
