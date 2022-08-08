@@ -33,6 +33,10 @@ export class UsersService {
     )
   }
 
+  updateOne(user: User): Observable<User> {
+    return this.http.put('api/users/' + user.id, user)
+  }
+
   findAll(page: number, size: number): Observable<UserData> {
     let params = new HttpParams();
     params = params.append('page', String(page));
