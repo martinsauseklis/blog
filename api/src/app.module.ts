@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { BlogModule } from './blog/blog.module';
 
 
 @Module({
@@ -14,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
     url: process.env.DATABASE_URL,
     autoLoadEntities: true,
     synchronize: true
-  }), UserModule, AuthModule],
+  }), UserModule, AuthModule, BlogModule],
   controllers: [AppController],
   providers: [AppService],
 })

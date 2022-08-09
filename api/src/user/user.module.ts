@@ -4,6 +4,7 @@ import { UserController } from './controller/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './models/user.entity';
 import { AuthModule } from 'src/auth/auth.module';
+import { BlogEntryEntity } from 'src/blog/model/blog-entry.entity';
 
 @Module({
   imports:[
