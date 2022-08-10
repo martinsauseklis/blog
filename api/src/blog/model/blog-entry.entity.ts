@@ -35,6 +35,6 @@ export class BlogEntryEntity {
     @Column({nullable: true})
     isPublished: boolean;
 
-    @ManyToOne(type => UserEntity, user => user.blogEntries)
+    @ManyToOne(type => UserEntity, user => user.blogEntries, {onDelete: 'CASCADE'})
     author: UserEntity
 }
