@@ -48,6 +48,13 @@ export class UsersService {
     )
   }
 
+  uploadProfileImage(formData: FormData): Observable<any> {
+    return this.http.post<FormData>('/api/users/upload', formData, {
+      reportProgress: true,
+      observe: 'events'
+    })
+  }
+
   paginateByName(page: number, size: number, username: string): Observable<UserData> {
     let params = new HttpParams();
     params = params.append('page', String(page));
