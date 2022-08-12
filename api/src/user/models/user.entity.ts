@@ -12,7 +12,7 @@ export class UserEntity {
     name: string;
     @Column({unique: true})
     username: string;
-    @Column()
+    @Column({ unique: true })
     email: string;
     @Column({select: false})
     password: string;

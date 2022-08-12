@@ -7,7 +7,7 @@ export interface BlogEntry {
     slug?: string;
     description?: string;
     body?: string;
-    createdAt?: Date;
+    created?: Date;
     updatedAt?: Date;
     likes?: number;
     author?: User;
