@@ -2,7 +2,8 @@ import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/htt
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
-import { AuthenticationService, User } from 'src/app/services/authentication-service/authentication.service';
+import { User } from 'src/app/model/user.interface';
+import { AuthenticationService } from 'src/app/services/authentication-service/authentication.service';
 import { UsersService } from 'src/app/services/user-service/users.service';
 
 export interface File {

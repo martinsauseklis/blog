@@ -1,23 +1,24 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, throwError, catchError } from 'rxjs';
-import { User } from '../authentication-service/authentication.service';
+import { User } from 'src/app/model/user.interface';
+
 
 export interface UserData {
-  items: User[],
+  items: User[];
   meta: {
     totalItems: number;
     itemCount: number;
     itemsPerPage: number;
     totalPages: number;
     currentPage: number;
-  },
+  };
   links: {
     first: string;
     previous: string;
     next: string;
     last: string;
-  },
+  };
 };
 
 @Injectable({
