@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateBlogEntryComponent } from './components/create-blog-entry/create-blog-entry.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { LoginComponent } from './components/login/login.component';
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'create-blog-entry',
+    component: CreateBlogEntryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',
