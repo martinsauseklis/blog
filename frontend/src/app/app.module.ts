@@ -27,6 +27,7 @@ import { AllBlogEntriesComponent } from './components/blog-entry/all-blog-entrie
 import { CreateBlogEntryComponent } from './components/blog-entry/create-blog-entry/create-blog-entry.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { ViewBlogEntryComponent } from './components/blog-entry/view-blog-entry/view-blog-entry.component';
+import { WINDOW_PROVIDERS } from './window-token';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ViewBlogEntryComponent } from './components/blog-entry/view-blog-entry/
 
   ],
   providers: [
+    WINDOW_PROVIDERS,
     JwtHelperService, 
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     {

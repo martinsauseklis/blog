@@ -2,7 +2,7 @@
     <mat-card *ngFor="let blogEntry of blogEntries?.items" class="card" (click)="navigate(blogEntry.id)">
         <div style="display: flex;">
             <div>
-                <img *ngIf="blogEntry.headerImage !== null; else placeholderImage" src="http://localhost:3000/api/blog-entries/image/{{blogEntry.headerImage}}">
+                <img *ngIf="blogEntry.headerImage !== null; else placeholderImage" src="{{origin}}/api/blog-entries/image/{{blogEntry.headerImage}}">
                 <ng-template #placeholderImage>
                     <img src="../../../assets/placeholders/placeholder-blog-entry.png">
                 </ng-template>

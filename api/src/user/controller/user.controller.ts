@@ -95,7 +95,7 @@ export class UserController {
         
 
         return this.userService.updateOne(user.id, {profileImage: file.filename}).pipe(
-            tap((user: User) => console.log(user)),
+            
             map((user: User) => ({profileImage: user.profileImage}))
         )
 
